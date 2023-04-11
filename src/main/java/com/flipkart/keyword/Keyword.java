@@ -1,5 +1,8 @@
 package com.flipkart.keyword;
 
+
+import java.util.Set;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,10 +11,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class keyword {
+public class Keyword {
 	public static WebDriver driver;
-	
-	public void openBrowser(String browserName) {
+
+	public static void openBrowser(String browserName) {
 		if (browserName.equalsIgnoreCase("Chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--remote-allow-origins=*");
@@ -27,16 +30,24 @@ public class keyword {
 			System.out.println("Invalid Browser Name" + browserName);
 		}
 	}
-	
 
-	public void launchUrl(String url) {
+	public static void launchUrl(String url) {
 		driver.get(url);
 	}
 
-
-	public void closeBrowser() {
+	public static void closeBrowser() {
 		driver.close();
 		System.out.println("Browser is closed sussesfuly.");
 	}
 
+	public static void switchWindows() {
+		String mainHandel = driver.getWindowHandle();
+		Set <String> allHandels = driver.getWindowHandles();
+		for (String windowHandel : allHandels) {
+			if (mainHandel.equals(windowHandel)) {	
+			}else {
+				driver.switchTo().window(windowHandel);
+			}
+		}
+	}
 }

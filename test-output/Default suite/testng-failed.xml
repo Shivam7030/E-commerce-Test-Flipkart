@@ -5,7 +5,8 @@
     <classes>
       <class name="Flipkart.HomePageTest">
         <methods>
-          <include name="CloseLoginPopUp"/>
+          <include name="tearDown"/>
+          <include name="SearchPhoneAndClickOnByNow"/>
           <include name="setup"/>
         </methods>
       </class> <!-- Flipkart.HomePageTest -->
